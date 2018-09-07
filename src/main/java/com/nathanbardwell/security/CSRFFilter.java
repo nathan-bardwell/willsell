@@ -1,4 +1,4 @@
-package com.techelevator.security;
+package com.nathanbardwell.security;
 
 import java.io.IOException;
 import java.security.SecureRandom;

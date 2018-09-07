@@ -1,4 +1,4 @@
-package com.techelevator.security;
+package com.nathanbardwell.security;
 
 import java.io.IOException;
 import java.net.URLEncoder;
@@ -12,7 +12,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.techelevator.model.User;
+import com.nathanbardwell.model.User;
 
 public class AuthorizationFilter implements Filter {
 

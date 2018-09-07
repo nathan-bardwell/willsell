@@ -1,4 +1,4 @@
-package com.techelevator.model;
+package com.nathanbardwell.model;
 
 public interface UserDAO {
 

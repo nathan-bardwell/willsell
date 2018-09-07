@@ -1,4 +1,4 @@
-package com.techelevator.controller;
+package com.nathanbardwell.controller;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.techelevator.model.UserDAO;
+import com.nathanbardwell.model.UserDAO;
 
 @Controller
 public class AuthenticationController {

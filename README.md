@@ -63,10 +63,10 @@ Minified versions of the Bootstrap CSS and Javascript files have been included  
 
 ### DAO Integration Tests
 
-`com.techelevator.DAOIntegrationTest` has been provided for use as a base class for any DAO integration test. It initializes a Datasource for testing and manages rollback of database changes between tests. The following is an example of extending this class for writing your own DAO integration tests:
+`com.nathanbardwell.DAOIntegrationTest` has been provided for use as a base class for any DAO integration test. It initializes a Datasource for testing and manages rollback of database changes between tests. The following is an example of extending this class for writing your own DAO integration tests:
 
 ```
-package com.techelevator;
+package com.nathanbardwell;
 
 import org.junit.Before;
 import javax.sql.DataSource;

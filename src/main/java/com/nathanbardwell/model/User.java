@@ -1,4 +1,4 @@
-package com.techelevator.model;
+package com.nathanbardwell.model;
 
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
