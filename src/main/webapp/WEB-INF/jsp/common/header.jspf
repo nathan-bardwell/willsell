@@ -6,10 +6,10 @@
 		<title><c:out value="${pageTitle}"/></title>
 		<c:url var="newCustomerUrl" value="/newCustomer"/>
 		<c:url var="customerListUrl" value="/customerSearchForm"/>
-		<c:url var="cssUrl" value="/css/style.css"/>
+		<c:url var="cssUrl" value="/css/main.css"/>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		<link rel="stylesheet" href="${cssUrl}">
-		<c:url var="scriptUrl" value="/script.js"/>
+		<c:url var="scriptUrl" value="/js/custom-scripts.js"/>
 		<script type="text/javascript" src="${scriptUrl}"></script>
 		</head>
 	<body>
