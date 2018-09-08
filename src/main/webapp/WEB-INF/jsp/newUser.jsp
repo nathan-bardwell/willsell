@@ -36,7 +36,7 @@
 		});
 	});
 </script>
-
+<div class="jumbotron">
 <c:url var="formAction" value="/users" />
 <form method="POST" action="${formAction}">
 <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
@@ -60,5 +60,5 @@
 		<div class="col-sm-4"></div>
 	</div>
 </form>
-
+</div>
 <%@include file="common/footer.jspf" %>
