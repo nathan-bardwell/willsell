@@ -24,7 +24,7 @@ public class CustomerController {
     @Autowired
     private CustomerDAO customerDao;
 
-    @RequestMapping(path= {"/", "/newCustomer"}, method=RequestMethod.GET)
+    @RequestMapping(path= {"/newCustomer"}, method=RequestMethod.GET)
     public String showHomepage() {
         return "newCustomer";
     }

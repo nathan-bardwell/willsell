@@ -21,7 +21,7 @@ public class AuthenticationController {
 		this.userDAO = userDAO;
 	}
 
-	@RequestMapping(path="/login", method=RequestMethod.GET)
+	@RequestMapping(path={"/", "login"}, method=RequestMethod.GET)
 	public String displayLoginForm() {
 		return "login";
 	}
@@ -37,7 +37,7 @@ public class AuthenticationController {
 			if(destination != null && ! destination.isEmpty()) {
 				return "redirect:" + destination;
 			} else {
-				return "redirect:/users/"+userName;
+				return "redirect:/customerSearchForm";
 			}
 		} else {
 			return "redirect:/login";
