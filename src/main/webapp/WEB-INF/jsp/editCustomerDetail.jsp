@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<c:set var="pageTitle" value="Edit Customer"/>
 <%@include file="common/header.jspf"%>
 <div class="jumbotron">
 	<h1>Edit Customer Info</h1>
