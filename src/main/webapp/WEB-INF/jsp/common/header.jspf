@@ -41,11 +41,11 @@
 	  <div class="collapse navbar-collapse" id="navbarNav">
 	    <ul class="nav navbar-nav">
 	      <li class="nav-item active">
-              <c:url var="newCustomerUrl" value="/newCustomer"/>
+              <c:url var="newCustomerUrl" value="/admin/newCustomer"/>
 	        <a class="nav-link" href="${newCustomerUrl}">Add New Customer <span class="sr-only">(current)</span></a>
 	      </li>
 	      <li class="nav-item">
-              <c:url var="customerListUrl" value="/customerSearchForm"/>
+              <c:url var="customerListUrl" value="/admin/customerSearchForm"/>
 	        <a class="nav-link" href="${customerListUrl}">View Customer Data</a>
 	      </li>
 	      <li class="nav-item">

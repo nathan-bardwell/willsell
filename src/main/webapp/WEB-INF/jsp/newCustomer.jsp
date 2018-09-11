@@ -4,7 +4,7 @@
 <div class="jumbotron">
 	<h1>Add a New Customer</h1>
 	<br>
-	<c:url var="newCustomerUrl" value="/newCustomer" />
+	<c:url var="newCustomerUrl" value="/admin/newCustomer" />
 	<div id="newCustomerForm">
 		<form action="${newCustomerUrl}" method="POST" autocomplete="off">
 			<div class="row">

@@ -114,7 +114,7 @@
 	</div>
 	<div class="row">
 		<div class="col">
-		<c:url var="editInfoUrl" value="/editCustomerDetail"/>
+		<c:url var="editInfoUrl" value="/admin/editCustomerDetail"/>
 			<a href="${editInfoUrl}?id=${customer.id}" class="btn btn-danger">Edit Customer Info</a>
 		</div>
 	</div>

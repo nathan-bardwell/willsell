@@ -4,7 +4,7 @@
 <div class="jumbotron">
 	<h1>Edit Customer Info</h1>
 	<br>
-	<c:url var="editCustomerUrl" value="/editCustomerDetail" />
+	<c:url var="editCustomerUrl" value="/admin/editCustomerDetail" />
 	<div id="editCustomerForm">
 		<form action="${editCustomerUrl}" method="POST" autocomplete="off">
 			<div class="row">

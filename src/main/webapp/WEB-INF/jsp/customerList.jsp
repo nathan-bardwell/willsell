@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="Search Customers"/>
 <%@include file="common/header.jspf"%>
-<c:url var="formActionUrl" value="/customerSearchResults"/>
+<c:url var="formActionUrl" value="/admin/customerSearchResults"/>
 <div class="jumbotron">
 <form action="${formActionUrl}" method="GET">Search By:<br>
 <div class="row">
@@ -36,7 +36,7 @@
 		<th>Phone</th>
 		<th>Email</th>
 	</tr>
-	<c:url var="customerDetailUrl" value="/customerDetail"/>
+	<c:url var="customerDetailUrl" value="/admin/customerDetail"/>
 	<c:forEach var="customer" items="${customers}">
 		<tr class="clickable-row" data-href="${customerDetailUrl}?id=${customer.id}">
 			<td><c:out value="${customer.firstName} ${customer.lastName}"/></td>
