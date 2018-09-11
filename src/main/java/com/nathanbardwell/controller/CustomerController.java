@@ -24,12 +24,12 @@ public class CustomerController {
     @Autowired
     private CustomerDAO customerDao;
 
-    @RequestMapping(path= {"/newCustomer"}, method=RequestMethod.GET)
+    @RequestMapping(path= {"/admin/newCustomer"}, method=RequestMethod.GET)
     public String showHomepage() {
         return "newCustomer";
     }
 
-    @RequestMapping(path="/newCustomer", method=RequestMethod.POST)
+    @RequestMapping(path="/admin/newCustomer", method=RequestMethod.POST)
     public String addNewCustomer(@RequestParam String firstName, @RequestParam String lastName,
                                  @RequestParam String phoneNumber, @RequestParam String address1, @RequestParam(defaultValue="") String address2,
                                  @RequestParam String city, @RequestParam String state, @RequestParam int zipCode,
@@ -68,12 +68,12 @@ public class CustomerController {
         return "redirect:/newCustomer";
     }
 
-    @RequestMapping(path="/customerSearchForm", method=RequestMethod.GET)
+    @RequestMapping(path="/admin/customerSearchForm", method=RequestMethod.GET)
     public String showSearchForm() {
         return "customerList";
     }
 
-    @RequestMapping(path="/customerSearchResults", method=RequestMethod.GET)
+    @RequestMapping(path="/admin/customerSearchResults", method=RequestMethod.GET)
     public String showSearchResults(@RequestParam String searchBy, @RequestParam String search,
                                     @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fromDate,
                                     @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate toDate,
@@ -86,19 +86,19 @@ public class CustomerController {
         return "/customerList";
     }
 
-    @RequestMapping(path="/customerDetail", method=RequestMethod.GET)
+    @RequestMapping(path="/admin/customerDetail", method=RequestMethod.GET)
     public String showCustomerDetails(@RequestParam long id, ModelMap modelHolder) {
         modelHolder.put("customer", customerDao.getCustomerDetail(id));
         return "customerDetail";
     }
 
-    @RequestMapping(path= {"/editCustomerDetail"}, method=RequestMethod.GET)
+    @RequestMapping(path= {"/admin/editCustomerDetail"}, method=RequestMethod.GET)
     public String showEditForm(@RequestParam long id, ModelMap modelHolder) {
         modelHolder.put("customer", customerDao.getCustomerDetail(id));
         return "editCustomerDetail";
     }
 
-    @RequestMapping(path="/editCustomerDetail", method=RequestMethod.POST)
+    @RequestMapping(path="/admin/editCustomerDetail", method=RequestMethod.POST)
     public String editCustomerInfo(@RequestParam long id, @RequestParam String firstName, @RequestParam String lastName,
                                    @RequestParam String phoneNumber, @RequestParam String address1, @RequestParam(defaultValue="") String address2,
                                    @RequestParam String city, @RequestParam String state, @RequestParam int zipCode,
