@@ -7,6 +7,7 @@
 	<c:url var="newCustomerUrl" value="/admin/newCustomer" />
 	<div id="newCustomerForm">
 		<form action="${newCustomerUrl}" method="POST" autocomplete="off">
+			<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
 			<div class="row">
 				<div class="col">
 					First Name: <input type="text" name="firstName"
@@ -103,6 +104,13 @@
 					Account Number: <input type="text" name="acctNumber"
 						class="form-control">
 				</div>
+				<div class="col">
+					EZConnect?<br>
+						<select id="ezConnect" name="ezConnect">
+							<option value="yes"> Yes</option>
+							<option value="no" selected> No</option>
+						</select>
+				</div>
 			</div>
 			<div class="row" id="installInfo">
 				<div class="col">
@@ -163,14 +171,6 @@
 				<div class="col">
 					Date of Interaction: <input type="date" class="form-control"
 						name="dateOfSale">
-				</div>
-				<div class="col radio">
-					EZConnect?<br>
-					<div>
-					<fieldset id="ezConnect">
-						<input type="radio" value="true" name="ezConnect"> Yes<br>
-						<input type="radio" value="false" name="ezConnect"> No
-					</fieldset></div>
 				</div>
 			</div>
 			<div class="row">

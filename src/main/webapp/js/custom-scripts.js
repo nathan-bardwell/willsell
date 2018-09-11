@@ -1,9 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     let searchBy = document.querySelector('select[name="searchBy"]');
-searchBy.addEventListener('change', searchHandler);
+    if (searchBy != null) {
+        searchBy.addEventListener('change', searchHandler);
+    }
 
-let ezConnect = document.getElementById('ezConnect');
-ezConnect.addEventListener('change', installDateHandler)
+    let ezConnect = document.getElementById('ezConnect');
+    if (ezConnect != null) {
+        ezConnect.addEventListener('change', installDateHandler);
+    }
 });
 
 function searchHandler(event) {
@@ -19,7 +23,9 @@ function searchHandler(event) {
 
 function installDateHandler(event) {
     let value = event.currentTarget.value;
-    if (value === true) {
-
+    if (value === 'yes') {
+        document.getElementById('installInfo').classList.add('d-none');
+    } else {
+        document.getElementById('installInfo').classList.remove('d-none');
     }
 }

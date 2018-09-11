@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="Search Customers"/>
 <%@include file="common/header.jspf"%>
+
 <c:url var="formActionUrl" value="/admin/customerSearchResults"/>
 <div class="jumbotron">
 <form action="${formActionUrl}" method="GET">Search By:<br>
@@ -46,6 +47,14 @@
 	</c:forEach>
 </table>
 </div></div>
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $(".clickable-row").click(function() {
+                window.location = $(this).data("href");
+            });
+        });
+    </script>
+
 
 </div>
 <%@include file="common/footer.jspf"%>

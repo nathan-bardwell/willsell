@@ -33,9 +33,13 @@ public class CustomerController {
     public String addNewCustomer(@RequestParam String firstName, @RequestParam String lastName,
                                  @RequestParam String phoneNumber, @RequestParam String address1, @RequestParam(defaultValue="") String address2,
                                  @RequestParam String city, @RequestParam String state, @RequestParam int zipCode,
-                                 @RequestParam String email, @RequestParam long acctNumber, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate installDate, @RequestParam @DateTimeFormat(iso = ISO.TIME) LocalTime installTime,
+                                 @RequestParam String email, @RequestParam long acctNumber,
+                                 @RequestParam (required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate installDate
+                                         ,
+                                 @RequestParam (required = false) @DateTimeFormat(iso = ISO.TIME) LocalTime installTime,
                                  @RequestParam(defaultValue="false") boolean psuPhone, @RequestParam(defaultValue="false") boolean psuInternet, @RequestParam(defaultValue="false") boolean psuTV,
-                                 @RequestParam String saleLocation, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateOfSale, @RequestParam(defaultValue="false") boolean ezConnect,
+                                 @RequestParam String saleLocation, @RequestParam @DateTimeFormat(iso =
+            DateTimeFormat.ISO.DATE) LocalDate dateOfSale, @RequestParam(defaultValue="no") String ezConnect,
                                  @RequestParam(defaultValue="") String notes,
                                  RedirectAttributes flashScope) {
 
@@ -51,21 +55,27 @@ public class CustomerController {
         newCustomer.setZipCode(zipCode);
         newCustomer.setEmail(email);
         newCustomer.setAcctNumber(acctNumber);
-        newCustomer.setInstallDate(installDate);
-        newCustomer.setInstallTime(installTime);
         newCustomer.setPsuPhone(psuPhone);
         newCustomer.setPsuInternet(psuInternet);
         newCustomer.setPsuTV(psuTV);
         newCustomer.setSaleLocation(saleLocation);
         newCustomer.setDateOfSale(dateOfSale);
-        newCustomer.setEzConnect(ezConnect);
+        if (ezConnect.equals("yes")) {
+            newCustomer.setEzConnect(true);
+            newCustomer.setInstallDate(LocalDate.now());
+            newCustomer.setInstallTime(LocalTime.now());
+        } else {
+            newCustomer.setEzConnect(false);
+            newCustomer.setInstallDate(installDate);
+            newCustomer.setInstallTime(installTime);
+        }
         newCustomer.setNotes(notes);
 
         customerDao.saveNewCustomer(newCustomer);
 
         flashScope.addFlashAttribute("message", firstName + " " + lastName + " has been added to your database.");
 
-        return "redirect:/newCustomer";
+        return "redirect:/admin/newCustomer";
     }
 
     @RequestMapping(path="/admin/customerSearchForm", method=RequestMethod.GET)
@@ -135,7 +145,7 @@ public class CustomerController {
 
         flashScope.addFlashAttribute("message", firstName + " " + lastName + "'s information has been updated.");
 
-        return "redirect:/customerSearchForm";
+        return "redirect:/admin/customerSearchForm";
     }
 
 }

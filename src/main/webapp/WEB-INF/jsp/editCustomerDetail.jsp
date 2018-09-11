@@ -7,6 +7,7 @@
 	<c:url var="editCustomerUrl" value="/admin/editCustomerDetail" />
 	<div id="editCustomerForm">
 		<form action="${editCustomerUrl}" method="POST" autocomplete="off">
+			<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
 			<div class="row">
 				<div class="col">
 				<input type="text" name="id" class="d-none"  value="${customer.id}">
