@@ -4,39 +4,85 @@
 <html>
 	<head>
 		<title><c:out value="${pageTitle}"/></title>
-		<c:url var="newCustomerUrl" value="/newCustomer"/>
-		<c:url var="customerListUrl" value="/customerSearchForm"/>
 		<c:url var="cssUrl" value="/css/main.css"/>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-		<link rel="stylesheet" href="${cssUrl}">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+        <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.js "></script>
+        <script src="https://cdn.jsdelivr.net/jquery.timeago/1.4.1/jquery.timeago.min.js"></script>
+        <link rel="stylesheet" href="${cssUrl}">
 		<c:url var="scriptUrl" value="/js/custom-scripts.js"/>
 		<script type="text/javascript" src="${scriptUrl}"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("time.timeago").timeago();
+
+                $("#logoutLink").click(function(event){
+                    $("#logoutForm").submit();
+                });
+
+                let pathname = window.location.pathname;
+                $("nav a[href='"+pathname+"']").parent().addClass("active");
+
+            });
+        </script>
 		</head>
 	<body>
-	<div class="container">
+
 	
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	  <a class="navbar-brand" href="#">WillSell</a>
+		<c:if test="${not empty currentUser}">
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
 	  <div class="collapse navbar-collapse" id="navbarNav">
-	    <ul class="navbar-nav">
+	    <ul class="nav navbar-nav">
 	      <li class="nav-item active">
+              <c:url var="newCustomerUrl" value="/newCustomer"/>
 	        <a class="nav-link" href="${newCustomerUrl}">Add New Customer <span class="sr-only">(current)</span></a>
 	      </li>
 	      <li class="nav-item">
+              <c:url var="customerListUrl" value="/customerSearchForm"/>
 	        <a class="nav-link" href="${customerListUrl}">View Customer Data</a>
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link" href="#">Reporting</a>
 	      </li>
 	    </ul>
+          </c:if>
+          <ul class="nav navbar-nav navbar-right">
+              <c:choose>
+                  <c:when test="${empty currentUser}">
+                      <c:url var="newUserHref" value="/users/new" />
+                      <li class="nav-item"><a class="nav-link" href="${newUserHref}">Sign Up</a></li>
+                      <c:url var="loginHref" value="/login" />
+                      <li class="nav-item"><a class="nav-link" href="${loginHref}">Log In</a></li>
+                  </c:when>
+                  <c:otherwise>
+                      <c:url var="logoutAction" value="/logout" />
+                      <form id="logoutForm" action="${logoutAction}" method="POST">
+                          <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
+                      </form>
+                      <li class="nav-item"><a class="nav-link" id="logoutLink" href="#">Log Out</a></li>
+
+                  </c:otherwise>
+              </c:choose>
+          </ul>
 	  </div>
+
 	</nav>
-	
-	<c:if test="${message != null}">
+        <c:if test="${not empty currentUser}">
+        <p id="currentUser">Current User: ${currentUser.userName}</p>
+        </c:if>
+    <div class="container">
+
+    <c:if test="${message != null}">
 			<div class="alert alert-success" role="alert">
 				<c:out value="${message}"/>
 			</div>
-		</c:if>	
+		</c:if>

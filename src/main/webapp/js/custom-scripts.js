@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let searchBy = document.querySelector('select[name="searchBy"]');
 searchBy.addEventListener('change', searchHandler);
 
-let ezConnect = document.getElemantById('ezConnect');
+let ezConnect = document.getElementById('ezConnect');
 ezConnect.addEventListener('change', installDateHandler)
 });
 
